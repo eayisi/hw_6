@@ -1,0 +1,22 @@
+---
+title: "Homework 6"
+author: "Olivia, Andre, Emmanuel"
+format:
+  typst:
+    fig-width: 6.5
+    fig-height: 8
+execute:
+  echo: false
+editor: visual
+---
+
+```{r}
+library(tidyverse)
+library(knitr)
+library(here)
+```
+
+```{r}
+star <- read_csv(here("data", "star.csv"))
+```
+
