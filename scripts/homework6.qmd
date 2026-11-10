@@ -7,6 +7,7 @@ format:
   typst:
     fig-width: 6.5
     fig-height: 8
+    fig-format: png
 execute:
   echo: false
 editor: visual
@@ -37,3 +38,26 @@ We used the tidyverse (@Wickham2019-mu) , knitr (@Xie2026) , and here (@Müler20
 
 ::: {#refs}
 :::
+
+```{r}
+names(star)
+
+
+star |> 
+  group_by(sex, frl) |> 
+  summarize(
+    math_mean = mean(tmathss, na.rm = TRUE),
+    math_sd = sd(tmathss, na.rm = TRUE),
+    rdg_mean = mean(treadss, na.rm = TRUE),
+    rdg_sd = sd(treadss, na.rm = TRUE)
+  ) |> 
+  ungroup() |> 
+  kable(
+    col.names = c("Sex", "FRL", "Math Mean", "Math SD",
+                  "Reading Mean", "Reading SD"),
+    digits = 2,
+    booktabs = TRUE
+  )
+```
+
+#The summary statistics table above shows that students who were not eligible for free or reduced lunch had higher average math and reading scores than students who were eligible for free or reduced lunch. Girls had higher average scores than boys in both subjects across free and reduced lunch categories. The standard deviations shows variability in both math and reading scores.
