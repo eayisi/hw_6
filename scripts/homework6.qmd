@@ -31,16 +31,6 @@ We used the tidyverse (@Wickham2019-mu) , knitr (@Xie2026) , and here (@Müler20
 
 ------------------------------------------------------------------------
 
-# 
-
-```{=typst}
-#pagebreak()
-```
-# References
-
-::: {#refs}
-:::
-
 ```{r}
 star |> 
   group_by(sex, frl) |> 
@@ -60,7 +50,6 @@ star |>
 ```
 
 #The summary statistics table above shows that students who were not eligible for free or reduced lunch had higher average math and reading scores than students who were eligible for free or reduced lunch. Girls had higher average scores than boys in both subjects across free and reduced lunch categories. The standard deviations shows variability in both math and reading scores.
-
 
 ## Relationship Between Teacher Experience and Math Scores
 
@@ -105,4 +94,9 @@ ggplot(star, aes(x = totexp, y = tmathss)) +
 
 The plot shows a slight positive relationship between teacher experience and students' mathematics scores. Students whose teachers have more years of experience tend to have slightly higher math scores. Students who pay for meals generally have higher math scores than those receiving free or reduced-price meals, regardless of teacher experience.
 
+# 
 
+```{=typst}
+#pagebreak()
+```
+# References
