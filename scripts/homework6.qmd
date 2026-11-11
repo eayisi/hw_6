@@ -10,6 +10,8 @@ format:
     fig-format: png
 execute:
   echo: false
+  message: false
+  warning: false
 editor: visual
 ---
 
@@ -40,9 +42,6 @@ We used the tidyverse (@Wickham2019-mu) , knitr (@Xie2026) , and here (@Müler20
 :::
 
 ```{r}
-names(star)
-
-
 star |> 
   group_by(sex, frl) |> 
   summarize(
@@ -61,3 +60,49 @@ star |>
 ```
 
 #The summary statistics table above shows that students who were not eligible for free or reduced lunch had higher average math and reading scores than students who were eligible for free or reduced lunch. Girls had higher average scores than boys in both subjects across free and reduced lunch categories. The standard deviations shows variability in both math and reading scores.
+
+
+## Relationship Between Teacher Experience and Math Scores
+
+The plot below shows the relationship between teacher experience and students' mathematics scores, with separate regression lines for students receiving free/reduced-price meals and those receiving paid meals.
+
+```{r}
+
+ggplot(star, aes(x = totexp, y = tmathss)) +
+  geom_point(color = "gray", alpha = 0.5, size = 1) +
+  geom_smooth(
+    aes(color = frl, fill = frl),
+    method = "lm",
+    se = TRUE
+  ) +
+  scale_color_manual(
+    name = "Lunch status",
+    values = c("yes" = "blue", "no" = "red"),
+    labels = c("yes" = "Free/Reduced Price Meals",
+               "no" = "Paid Meals")
+  ) +
+  scale_fill_manual(
+    name = "Lunch status",
+    values = c("yes" = "blue", "no" = "red"),
+    labels = c("yes" = "Free/Reduced Price Meals",
+               "no" = "Paid Meals")
+  ) +
+  labs(
+    title = "Relation between teacher experience and math scores",
+    subtitle = "Separate regression lines displayed by free/reduced price lunch status",
+    x = "Teacher Experience (years)",
+    y = "Total Math Scale Score"
+  ) +
+  theme_minimal() +
+  theme(
+    legend.position = "bottom",
+    legend.title = element_text(size = 10),
+    plot.title = element_text(size = 12),
+    plot.subtitle = element_text(size = 10)
+  )
+
+```
+
+The plot shows a slight positive relationship between teacher experience and students' mathematics scores. Students whose teachers have more years of experience tend to have slightly higher math scores. Students who pay for meals generally have higher math scores than those receiving free or reduced-price meals, regardless of teacher experience.
+
+
